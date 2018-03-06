@@ -1,0 +1,80 @@
+---
+title: "Atlantic Seabird Structure"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+#Using the datamodelr package to graph the structure of the Atlantic Seabird Catalog
+
+## Setup
+Call the need libraries
+
+```{r call libraries, message=FALSE, warning=FALSE}
+# Load Tidyverse Compotents
+library(tidyverse) # to use tidyverse
+library(DBI)
+library(rlang)
+library(magrittr)
+library(glue)
+
+# Data Access Tools
+library(odbc)
+
+
+# Key packages
+library(datamodelr) #from robgf/datamodelr GitHub
+```
+
+Connect to database using RODBC.  This may varying depending on how your computer is set up.
+
+```{r connect to database}
+con <-DBI::dbConnect(odbc::odbc(), "alantic_seabirds", database = "atlantic_seabirds")
+# con <- odbcConnect(dsn = "alantic_seabirds")
+sQuery <- dm_re_query("sqlserver")
+dm_atlantic_seabird <- dbGetQuery(con, sQuery)
+DBI::dbDisconnect(con)
+```
+
+## Create the database Model
+Using datamodelr to create the model object
+
+```{r Create database model}
+# convert to a data model
+dm_atlantic_seabird <- as.data_model(dm_atlantic_seabird)
+```
+
+
+## Plot the result
+
+```{r Plot results}
+(graph <- dm_create_graph(dm_atlantic_seabird) %>%
+  dm_render_graph())
+```
+
+## Refine foucus and plot
+
+```{r}
+focus <- list(tables = c(
+    "Survey",
+    "Transect", 
+    "SurveyMap",
+    "DesignPlan",
+    "DesignFlown",
+    "GpsTrack_point",
+    "Observation",
+    "Aircraft",
+    "FlightCrew",
+    "ObservationCode",
+    "nested_group",
+    "CrewMember"
+    
+    
+))
+
+(focus_graph <- dm_create_graph(dm_atlantic_seabird, focus = focus) %>%
+  dm_render_graph())
+
+```
+
