@@ -1,5 +1,5 @@
 ---
-title: "Atlantic Seabird Structure"
+title: "Atlantic Seabird Database Structure"
 output:
   html_document:
     df_print: paged
