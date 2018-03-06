@@ -9,7 +9,8 @@ output:
 Using the datamodelr package to graph the structure of the Atlantic Seabird Catalog
 
 ## Setup
-Call the need libraries
+### Packages
+Call the needed packages
 
 ```{r call libraries, message=FALSE, warning=FALSE}
 # Load Tidyverse Compotents
@@ -27,7 +28,8 @@ library(odbc)
 library(datamodelr) #from robgf/datamodelr GitHub
 ```
 
-Connect to database using RODBC.  This may varying depending on how your computer is set up.
+### Connect to database
+This may varying depending on how your computer is set up.
 
 ```{r connect to database}
 con <-DBI::dbConnect(odbc::odbc(), "alantic_seabirds", database = "atlantic_seabirds")
