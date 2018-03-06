@@ -3,7 +3,6 @@ title: "Atlantic Seabird Structure"
 output:
   html_document:
     df_print: paged
-  pdf_document: default
 ---
 
 Using the datamodelr package to graph the structure of the Atlantic Seabird Catalog
@@ -54,7 +53,7 @@ dm_atlantic_seabird <- as.data_model(dm_atlantic_seabird)
   dm_render_graph())
 ```
 
-## Refine foucus and plot
+## Refine focus and plot
 
 ```{r}
 focus <- list(tables = c(
