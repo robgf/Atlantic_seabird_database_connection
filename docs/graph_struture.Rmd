@@ -1,9 +1,9 @@
 ---
 title: "Atlantic Seabird Structure"
 output:
-  pdf_document: default
   html_document:
     df_print: paged
+  pdf_document: default
 ---
 
 Using the datamodelr package to graph the structure of the Atlantic Seabird Catalog
