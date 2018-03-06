@@ -6,7 +6,7 @@ output:
     df_print: paged
 ---
 
-#Using the datamodelr package to graph the structure of the Atlantic Seabird Catalog
+Using the datamodelr package to graph the structure of the Atlantic Seabird Catalog
 
 ## Setup
 Call the need libraries
