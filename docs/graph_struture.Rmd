@@ -31,7 +31,6 @@ Connect to database using RODBC.  This may varying depending on how your compute
 
 ```{r connect to database}
 con <-DBI::dbConnect(odbc::odbc(), "alantic_seabirds", database = "atlantic_seabirds")
-# con <- odbcConnect(dsn = "alantic_seabirds")
 sQuery <- dm_re_query("sqlserver")
 dm_atlantic_seabird <- dbGetQuery(con, sQuery)
 DBI::dbDisconnect(con)
